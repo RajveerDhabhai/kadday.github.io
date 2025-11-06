@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heart Pop Game</title>
+  <link rel="stylesheet" href="hearts.css">
+</head>
+<body>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const totalHearts = 3;
+      let heartsPopped = 0;
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.textContent = "❤️";
+
+        // random position (avoid edges)
+        const x = Math.random() * (window.innerWidth - 60);
+        const y = Math.random() * (window.innerHeight - 60);
+        heart.style.left = `${x}px`;
+        heart.style.top = `${y}px`;
+
+        // pop effect
+        heart.addEventListener("click", () => {
+          heart.classList.add("pop");
+          setTimeout(() => heart.remove(), 300);
+          heartsPopped++;
+
+          if (heartsPopped < totalHearts) {
+            setTimeout(createHeart, 500);
+          } else {
+            setTimeout(() => {
+              window.location.href = "final.html";
+            }, 600);
+          }
+        });
+
+        document.body.appendChild(heart);
+      }
+
+      // start with the first heart
+      createHeart();
+
+      const colors = ["#ff6b81","#ff9a9e","#ffccd5","#ff85a2"]; // soft heart colors
+
+      document.addEventListener('mousemove', (e) => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.position = 'absolute';
+        heart.style.left = e.clientX + 'px';
+        heart.style.top = e.clientY + 'px';
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+
+        // scale font size for mobile vs desktop
+        const baseSize = window.innerWidth < 600 ? 12 : 18;
+        heart.style.fontSize = `${Math.random() * 8 + baseSize}px`;
+
+        heart.style.opacity = '0.3';
+        heart.style.pointerEvents = 'none';
+        heart.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        heart.innerHTML = '❤️';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.style.transform = 'translate(-50%, -50%) scale(1.8) translateY(-20px)';
+          heart.style.opacity = '0';
+        }, 50);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 300);
+      });
+
+      // Optional: touch support for mobile
+      document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        if (!touch) return;
+
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.style.position = 'absolute';
+        heart.style.left = touch.clientX + 'px';
+        heart.style.top = touch.clientY + 'px';
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        const baseSize = window.innerWidth < 600 ? 12 : 18;
+        heart.style.fontSize = `${Math.random() * 8 + baseSize}px`;
+        heart.style.opacity = '0.3';
+        heart.style.pointerEvents = 'none';
+        heart.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+        heart.innerHTML = '❤️';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.style.transform = 'translate(-50%, -50%) scale(1.8) translateY(-20px)';
+          heart.style.opacity = '0';
+        }, 50);
+
+        setTimeout(() => heart.remove(), 300);
+      }, {passive: true});
+    });
+  </script>
+</body>
+</html>

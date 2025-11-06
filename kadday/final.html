@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kadday</title>
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+  <div class="container">
+    <p class="message">
+      <!-- ✨ Write your message below ✨ -->
+      Hey love ❤️<br><br>
+      Happy Birthday, my love! Today is all about celebrating the incredible person you are. Every moment I spend with you feels like a precious gift full of funns, warmth, and love. I am endlessly grateful for your presence in my life. You make every day brighter and every challenge easier just by being by my side.<br><br>
+
+      I can’t wait to shower you with love and create memories together today and in all the days to come. You are my heart, my joy, and my safe place, you mean the world to me. Thank you for being you, for loving me, and for letting me love you in return. Happy Birthday, my love, my sweetie, my baby, my everything.
+    </p>
+  </div>
+</body>
+
+<script>
+const colors = ["#ff6b81","#ff9a9e","#ffccd5","#ff85a2"]; // soft heart colors
+
+document.addEventListener('mousemove', (e) => {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.position = 'absolute';
+  heart.style.left = e.clientX + 'px';
+  heart.style.top = e.clientY + 'px';
+  heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+  heart.style.fontSize = `${Math.random() * 12 + 12}px`; // slightly random size
+  heart.style.opacity = '0.3';
+  heart.style.pointerEvents = 'none';
+  heart.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+  heart.innerHTML = '❤️';
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.style.transform = 'translate(-50%, -50%) scale(1.8) translateY(-20px)';
+    heart.style.opacity = '0';
+  }, 50);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 300);
+});
+</script>
+</html>
