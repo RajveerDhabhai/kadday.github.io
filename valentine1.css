@@ -1,0 +1,114 @@
+/* ===== Reset & Body ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #2e1a33, #6b3d84);
+  font-family: 'Georgia', serif;
+  color: #2c1a2b;
+  overflow: hidden;
+  padding: 2vw;
+}
+
+/* ===== Container ===== */
+.container {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 8vw 6vw;
+  border-radius: 3vw;
+  box-shadow: 0 2vw 5vw rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.6s ease;
+  position: relative;
+}
+
+/* ===== Floating animation ===== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== Message ===== */
+.message {
+  font-size: 1.25rem;
+  color: #3e1f3e;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ===== Buttons wrapper ===== */
+.buttons {
+  margin-top: 35px;
+}
+
+/* ===== Buttons ===== */
+button {
+  background: #ff85a2;
+  border: none;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  margin: 12px;
+  cursor: pointer;
+  color: white;
+  font-family: 'Georgia', serif;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background: #ff6b81;
+}
+
+/* ===== No button (for smooth movement) ===== */
+.no-btn {
+  position: relative;
+  transition: left 0.25s ease, top 0.25s ease;
+}
+
+/* ===== Heart trail ===== */
+.heart {
+  position: absolute;
+  font-size: 16px;
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    transform: translate(-50%, -70%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 10vw 8vw;
+    border-radius: 5vw;
+  }
+
+  .message {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12vw 10vw;
+    border-radius: 7vw;
+  }
+
+  .message {
+    font-size: 0.95rem;
+  }
+}
