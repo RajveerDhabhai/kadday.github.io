@@ -70,6 +70,7 @@ button:hover {
 /* ===== No button ===== */
 .no-btn {
   position: relative; /* static everywhere now */
+  transition: left 0.25s ease, top 0.25s ease;
 }
 
 /* ===== Heart trail ===== */
