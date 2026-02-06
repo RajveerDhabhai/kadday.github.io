@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Valentine?</title>
+  <link rel="stylesheet" href="final.css">
+</head>
+<body>
+
+  <div class="container">
+    <p class="message">
+      Hey my love ❤️<br><br>
+      I have something important to ask you…<br><br>
+      Will you be my Valentine? 💌
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="goYes()">Yes 💖</button>
+      <button class="no" onmouseover="moveNo()">No 🙈</button>
+    </div>
+  </div>
+
+<script>
+  function goYes() {
+    window.location.href = "yes.html";
+  }
+
+  function moveNo() {
+    const btn = document.querySelector('.no');
+    const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+    btn.style.position = "absolute";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+  }
+
+  /* Heart trail (same as your original) */
+  const colors = ["#ff6b81","#ff9a9e","#ffccd5","#ff85a2"];
+
+  document.addEventListener('mousemove', (e) => {
+    const heart = document.createElement('div');
+    heart.style.position = 'absolute';
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+    heart.style.fontSize = `${Math.random() * 12 + 12}px`;
+    heart.style.opacity = '0.3';
+    heart.style.pointerEvents = 'none';
+    heart.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+    heart.innerHTML = '❤️';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.style.transform = 'translate(-50%, -50%) scale(1.8) translateY(-20px)';
+      heart.style.opacity = '0';
+    }, 50);
+
+    setTimeout(() => heart.remove(), 300);
+  });
+</script>
+
+</body>
+</html>
