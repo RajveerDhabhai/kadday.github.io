@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="valentine1.css">
 </head>
+
 <body>
 
   <div class="container">
@@ -24,14 +26,24 @@
   </div>
 
   <script>
+
     function goYes() {
       window.location.href = "valentine2.html";
     }
 
     function moveNo() {
       const btn = document.querySelector('.no-btn');
-      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      const container = document.querySelector('.container');
+
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = btn.getBoundingClientRect();
+
+      const maxX = containerRect.width - btnRect.width;
+      const maxY = containerRect.height - btnRect.height;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
       btn.style.position = "absolute";
       btn.style.left = x + "px";
       btn.style.top = y + "px";
@@ -54,4 +66,5 @@
   </script>
 
 </body>
+
 </html>
