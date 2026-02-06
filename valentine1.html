@@ -31,54 +31,72 @@
   </div>
 
   <script>
-    function goYes() {
-      window.location.href = "valentine2.html";
-    }
-
-    function showNoBanner() {
-      // Only trigger on mobile (width <= 768px)
-      if (window.innerWidth > 768) return;
-
-      const banner = document.querySelector('.no-banner');
-
-      // Show the banner with fade-in
-      banner.style.display = 'block';
-      banner.style.opacity = 0;
-      banner.style.transition = 'opacity 0.5s ease';
-      
-      // Trigger fade-in on next frame
-      requestAnimationFrame(() => {
-        banner.style.opacity = 1;
-      });
-
-      // Remove any existing timeout so multiple clicks won't stack
-      if (banner.timeout) clearTimeout(banner.timeout);
-
-      // Hide after 2.5 seconds with fade-out
-      banner.timeout = setTimeout(() => {
-        banner.style.opacity = 0;
-        setTimeout(() => {
-          banner.style.display = 'none';
-          banner.style.transition = ''; // reset for next time
-        }, 500);
-      }, 2500);
-    }
-
-    /* Heart trail effect */
-    const colors = ["#ff6b81", "#ff9a9e", "#ffccd5", "#ff85a2"];
-
-    document.addEventListener('mousemove', (e) => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = e.clientX + 'px';
-      heart.style.top = e.clientY + 'px';
-      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-      heart.innerHTML = '❤️';
-      document.body.appendChild(heart);
-
-      setTimeout(() => heart.remove(), 300);
+  function goYes() {
+    window.location.href = "valentine2.html";
+  }
+  
+  // Show mobile banner on No click
+  function showNoBanner() {
+    if (window.innerWidth > 768) return; // Only mobile
+  
+    const banner = document.querySelector('.no-banner');
+    banner.style.display = 'block';
+    banner.style.opacity = 0;
+    banner.style.transition = 'opacity 0.5s ease';
+    requestAnimationFrame(() => {
+      banner.style.opacity = 1;
     });
+  
+    if (banner.timeout) clearTimeout(banner.timeout);
+  
+    banner.timeout = setTimeout(() => {
+      banner.style.opacity = 0;
+      setTimeout(() => {
+        banner.style.display = 'none';
+        banner.style.transition = '';
+      }, 500);
+    }, 2500);
+  }
+  
+  // Move No button on desktop hover
+  function moveNo() {
+    if (window.innerWidth <= 768) return; // Only desktop
+  
+    const btn = document.querySelector('.no-btn');
+    const container = document.querySelector('.container');
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const padding = 10;
+  
+    const maxX = containerRect.width - btnRect.width - padding;
+    const maxY = containerRect.height - btnRect.height - padding;
+  
+    const x = Math.random() * maxX + padding;
+    const y = Math.random() * maxY + padding;
+  
+    btn.style.position = "absolute";
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+  }
+  
+  /* Heart trail effect */
+  const colors = ["#ff6b81", "#ff9a9e", "#ffccd5", "#ff85a2"];
+  document.addEventListener('mousemove', (e) => {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = e.clientX + 'px';
+    heart.style.top = e.clientY + 'px';
+    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+    heart.innerHTML = '❤️';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 300);
+  });
+  
+  // Attach hover event only for desktop
+  const noBtn = document.querySelector('.no-btn');
+  noBtn.addEventListener('mouseover', moveNo);
   </script>
+
 
 </body>
 </html>
