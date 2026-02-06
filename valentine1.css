@@ -67,10 +67,9 @@ button:hover {
   background: #ff6b81;
 }
 
-/* ===== No button (for smooth movement) ===== */
+/* ===== No button ===== */
 .no-btn {
-  position: relative;
-  transition: left 0.25s ease, top 0.25s ease;
+  position: relative; /* static everywhere now */
 }
 
 /* ===== Heart trail ===== */
@@ -90,7 +89,7 @@ button:hover {
   }
 }
 
-/* ===== Responsive tweaks ===== */
+/* ===== Mobile / small screens ===== */
 @media (max-width: 768px) {
   .container {
     padding: 10vw 8vw;
@@ -113,34 +112,23 @@ button:hover {
   }
 }
 
-
-/* ===== Mobile Banner ===== */
-.mobile-banner {
-  display: none;
+/* ===== No Banner ===== */
+.no-banner {
+  display: none; /* hidden by default */
   background: linear-gradient(135deg, #ff9a9e, #ff6b81);
   color: white;
   font-size: 1rem;
-  padding: 10px 16px;
-  border-radius: 20px;
+  padding: 12px 20px;
+  border-radius: 25px;
   margin-top: 20px;
   text-align: center;
   box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  animation: wiggle 3s ease-in-out infinite;
+  animation: wiggle 2s ease-in-out 1; /* wiggle once when shown */
 }
 
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(-1deg); }
-}
-
-/* Show banner only on mobile, hide moving behavior */
-@media (max-width: 768px) {
-  .mobile-banner {
-    display: block;
-  }
-
-  .no-btn {
-    /* make No button static on mobile */
-    position: relative !important;
-  }
+  25% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  75% { transform: rotate(-5deg); }
 }
