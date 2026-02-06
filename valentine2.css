@@ -1,0 +1,82 @@
+/* ===== Reset & Body ===== */
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #ffccd5, #ff9a9e); /* warmer/pink gradient */
+  font-family: 'Georgia', serif;
+  color: #3e1f3e;
+  overflow: hidden;
+  padding: 2vw;
+}
+
+/* ===== Container ===== */
+.container {
+  background: rgba(255, 255, 255, 0.97);
+  padding: 8vw 6vw;
+  border-radius: 3vw;
+  box-shadow: 0 2vw 5vw rgba(0, 0, 0, 0.25);
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  animation: float 6s ease-in-out infinite;
+  transition: all 0.6s ease;
+}
+
+/* ===== Floating animation ===== */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ===== Message ===== */
+.message {
+  font-size: 1.25rem;
+  color: #3e1f3e;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* ===== Heart trail ===== */
+.heart {
+  position: absolute;
+  font-size: 16px;
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  animation: fadeUp 0.5s ease forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    transform: translate(-50%, -70%) scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* ===== Responsive tweaks ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 10vw 8vw;
+    border-radius: 5vw;
+  }
+
+  .message {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12vw 10vw;
+    border-radius: 7vw;
+  }
+
+  .message {
+    font-size: 0.95rem;
+  }
+}
