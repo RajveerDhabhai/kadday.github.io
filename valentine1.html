@@ -44,11 +44,13 @@
       const containerRect = container.getBoundingClientRect();
       const btnRect = btn.getBoundingClientRect();
 
-      const maxX = containerRect.width - btnRect.width;
-      const maxY = containerRect.height - btnRect.height;
+      const padding = 10; // keeps it from touching edges
 
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
+      const maxX = containerRect.width - btnRect.width - padding;
+      const maxY = containerRect.height - btnRect.height - padding;
+
+      const x = Math.random() * maxX + padding;
+      const y = Math.random() * maxY + padding;
 
       btn.style.position = "absolute";
       btn.style.left = x + "px";
