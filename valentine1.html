@@ -37,7 +37,25 @@
 
     function showNoBanner() {
       const banner = document.querySelector('.no-banner');
+    
+      // Show the banner
       banner.style.display = 'block';
+      banner.style.opacity = 1;
+
+      // Remove any existing timeout so multiple clicks won't stack
+      if (banner.timeout) clearTimeout(banner.timeout);
+
+      // Hide after 2.5 seconds with a fade out
+      banner.timeout = setTimeout(() => {
+        banner.style.transition = 'opacity 0.8s ease';
+        banner.style.opacity = 0;
+
+        // After transition, hide completely
+        setTimeout(() => {
+          banner.style.display = 'none';
+          banner.style.transition = ''; // reset for next time
+        }, 800);
+      }, 2500);
     }
 
     /* Heart trail effect */
