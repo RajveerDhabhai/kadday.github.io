@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Valentine ❤️</title>
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="valentine2.css">
+</head>
+<body>
+
+  <div class="container">
+    <p class="message">
+      YAYYY 🥹❤️<br><br>
+      You really said yes… and my heart is so full right now.<br><br>
+      Thank you for being my Valentine, my love.  
+      Every day with you feels special, and I can’t wait to
+      make more memories, laugh endlessly, and love you
+      more with every moment. 💕<br><br>
+      You’re my heart. Always. My sweetie pie!
+    </p>
+  </div>
+
+  <script>
+    /* Heart trail effect */
+    const colors = ["#ff6b81", "#ff9a9e", "#ffccd5", "#ff85a2"];
+
+    document.addEventListener('mousemove', (e) => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = e.clientX + 'px';
+      heart.style.top = e.clientY + 'px';
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 400);
+    });
+
+    /* Mobile support */
+    document.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = touch.clientX + 'px';
+      heart.style.top = touch.clientY + 'px';
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      heart.innerHTML = '❤️';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 400);
+    });
+  </script>
+
+</body>
+</html>
