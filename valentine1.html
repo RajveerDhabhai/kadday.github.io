@@ -13,6 +13,7 @@
 <body>
 
   <div class="container">
+
     <p class="message">
       Hey my love ❤️<br><br>
       I have something special to ask you…<br><br>
@@ -21,18 +22,15 @@
 
     <div class="buttons">
       <button class="yes-btn" onclick="goYes()">Yes 💖</button>
-      <button class="no-btn"
-        onmouseover="moveNo()"
-        ontouchstart="moveNo()"
-        onclick="moveNo()">
-  No 🙈
-</button>
-
+      <button class="no-btn" onmouseover="moveNo()">No 🙈</button>
     </div>
+
+    <!-- Mobile Banner -->
+    <div class="mobile-banner">EHHH! SAY YES! 😅</div>
+
   </div>
 
   <script>
-
     function goYes() {
       window.location.href = "valentine2.html";
     }
@@ -44,7 +42,7 @@
       const containerRect = container.getBoundingClientRect();
       const btnRect = btn.getBoundingClientRect();
 
-      const padding = 10; // keeps it from touching edges
+      const padding = 10;
 
       const maxX = containerRect.width - btnRect.width - padding;
       const maxY = containerRect.height - btnRect.height - padding;
