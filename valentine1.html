@@ -22,11 +22,11 @@
 
     <div class="buttons">
       <button class="yes-btn" onclick="goYes()">Yes 💖</button>
-      <button class="no-btn" onmouseover="moveNo()">No 🙈</button>
+      <button class="no-btn" onclick="showNoBanner()">No 🙈</button>
     </div>
 
-    <!-- Mobile Banner -->
-    <div class="mobile-banner">EHHH! SAY YES! 😅</div>
+    <!-- Banner shown only when No is clicked -->
+    <div class="no-banner">EHHH! SAY YES! 😅</div>
 
   </div>
 
@@ -35,24 +35,9 @@
       window.location.href = "valentine2.html";
     }
 
-    function moveNo() {
-      const btn = document.querySelector('.no-btn');
-      const container = document.querySelector('.container');
-
-      const containerRect = container.getBoundingClientRect();
-      const btnRect = btn.getBoundingClientRect();
-
-      const padding = 10;
-
-      const maxX = containerRect.width - btnRect.width - padding;
-      const maxY = containerRect.height - btnRect.height - padding;
-
-      const x = Math.random() * maxX + padding;
-      const y = Math.random() * maxY + padding;
-
-      btn.style.position = "absolute";
-      btn.style.left = x + "px";
-      btn.style.top = y + "px";
+    function showNoBanner() {
+      const banner = document.querySelector('.no-banner');
+      banner.style.display = 'block';
     }
 
     /* Heart trail effect */
